@@ -27,6 +27,8 @@ module.exports = function(params, cb) {
   options.dest = options.dest || path.dirname(pages[0].dest);
   options.pretty = options.pretty || false;
   options.basename = options.basename || 'sitemap.xml';
+  options.removefolder = options.removefolder || false;
+  options.prettyimproved = optios.prettyimproved || false;
 
   if (typeof options.exclude !== 'undefined') {
     exclusion = union([], exclusion, options.exclude || []);
@@ -55,6 +57,12 @@ module.exports = function(params, cb) {
     }
     if (options.pretty === true) {
       finalFilename = file.dest.replace('index.html', '');
+    }
+    if(options.removefolder !== false) {
+      finalFilename.replace(options.removefolder,'');
+    }
+    if(options.prettyimproved){
+        finalFilename.replace('.html','');
     }
     return (relativedest ? finalFilename.replace(relativedest + '/', '') : finalFilename);
   };
