@@ -28,7 +28,7 @@ module.exports = function(params, cb) {
   options.pretty = options.pretty || false;
   options.basename = options.basename || 'sitemap.xml';
   options.removefolder = options.removefolder || false;
-  options.prettyimproved = optios.prettyimproved || false;
+  options.prettyimproved = options.prettyimproved || false;
 
   if (typeof options.exclude !== 'undefined') {
     exclusion = union([], exclusion, options.exclude || []);
@@ -61,7 +61,7 @@ module.exports = function(params, cb) {
     if(options.removefolder !== false) {
       finalFilename.replace(options.removefolder,'');
     }
-    if(options.prettyimproved){
+    if(options.prettyimproved === true){
         finalFilename.replace('.html','');
     }
     return (relativedest ? finalFilename.replace(relativedest + '/', '') : finalFilename);
