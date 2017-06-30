@@ -59,10 +59,10 @@ module.exports = function(params, cb) {
       finalFilename = file.dest.replace('index.html', '');
     }
     if(options.removefolder !== false) {
-      finalFilename.replace(options.removefolder,'');
+        finalFilename = finalFilename.replace(options.removefolder,'');
     }
     if(options.prettyimproved === true){
-        finalFilename.replace('.html','');
+        finalFilename = finalFilename.replace('.html','');
     }
     return (relativedest ? finalFilename.replace(relativedest + '/', '') : finalFilename);
   };
